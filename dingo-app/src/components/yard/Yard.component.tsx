@@ -6,6 +6,7 @@ import Dingo from "../dingo/Dingo.component";
 import { useState } from "react";
 import { useRandomClass } from "../../hooks/randomClass.hook";
 const Yard = () => {
+  const randomNumber = useRandomClass(3, 1500);
   const [dingoUp, setDingoUp] = useState("dinosaur");
   document.onkeydown = (e) => {
     e = e || window.event;
@@ -16,8 +17,6 @@ const Yard = () => {
       }, 500);
     }
   };
-  const randomNumber = useRandomClass(3, 1500);
-  console.log(randomNumber);
   let bush = <img src={bush3} alt="bush3" />;
   if (randomNumber === 0) {
     bush = <img src={bush3} alt="bush3" />;
@@ -26,6 +25,7 @@ const Yard = () => {
   } else if (randomNumber === 2) {
     bush = <img src={bush1} alt="bush1" />;
   }
+
   return (
     <div>
       <h1 className={Styles["game-header"]}>dinosaur game 🦕</h1>
