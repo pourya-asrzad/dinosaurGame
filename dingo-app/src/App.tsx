@@ -1,9 +1,8 @@
-import Dingo from "./components/dingo/Dingo.component";
-
+import Yard from "./components/yard/Yard.component";
 function App() {
   return (
     <div>
-      <Dingo />
+      <Yard />
     </div>
   );
 }
