@@ -16,16 +16,15 @@ const Yard = () => {
       }, 500);
     }
   };
-  const randomNumber = useRandomClass();
+  const randomNumber = useRandomClass(3, 1500);
   console.log(randomNumber);
-
   let bush = <img src={bush3} alt="bush3" />;
   if (randomNumber === 0) {
     bush = <img src={bush3} alt="bush3" />;
   } else if (randomNumber === 1) {
     bush = <img src={bush2} alt="bush2" />;
   } else if (randomNumber === 2) {
-    bush = <img src={bush1} alt="bush3" />;
+    bush = <img src={bush1} alt="bush1" />;
   }
   return (
     <div>

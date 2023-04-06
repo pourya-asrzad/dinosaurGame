@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 
-export function useRandomClass() {
+export function useRandomClass(randomRange: number, changeTime: number) {
   const [randomNumber, setRandomNumber] = useState(1);
   useEffect(() => {
     const time = setInterval(() => {
-      const randomNum = Math.floor(Math.random() * 3);
+      const randomNum = Math.floor(Math.random() * randomRange);
       setRandomNumber(randomNum);
-    }, 1500);
+    }, changeTime);
 
     return () => {
       clearInterval(time);
     };
-  });
+  }, [randomNumber]);
   return randomNumber;
 }
