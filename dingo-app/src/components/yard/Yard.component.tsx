@@ -3,9 +3,12 @@ import bush1 from "../../assets/images/bush1.svg";
 import bush2 from "../../assets/images/bush2.svg";
 import bush3 from "../../assets/images/bush3.svg";
 import Dingo from "../dingo/Dingo.component";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRandomClass } from "../../hooks/randomClass.hook";
 const Yard = () => {
+  const _optionBushes = useRef(null);
+  const _optionDino = useRef(null);
+
   const randomNumber = useRandomClass(3, 1500);
   const [dingoUp, setDingoUp] = useState("dinosaur");
   document.onkeydown = (e) => {
@@ -25,14 +28,34 @@ const Yard = () => {
   } else if (randomNumber === 2) {
     bush = <img src={bush1} alt="bush1" />;
   }
-
+  useEffect(() => {
+    setInterval(() => {
+      const cactusCurrent = _optionBushes.current!;
+      const cactusLeft = parseInt(cactusCurrent["offsetLeft"]);
+      const dinoCurrent = _optionBushes.current!;
+      const dinoTop = dinoCurrent["offsetBottom"];
+      // console.log(dinoTop);
+      if (cactusLeft < -490 && cactusLeft < 556) {
+        alert("game over");
+      }
+    }, 10);
+  });
   return (
     <div>
       <h1 className={Styles["game-header"]}>dinosaur game 🦕</h1>
       <div className={Styles.Yard}>
         <div className={Styles["playground"]}>
-          <Dingo className={Styles["dinosaur"] + " " + Styles[dingoUp]} />
-          <div className={Styles["bushes"]}>{bush}</div>
+          <Dingo
+            ref={_optionDino}
+            className={Styles["dinosaur"] + " " + Styles[dingoUp]}
+          />
+          <div
+            ref={_optionBushes}
+            className={Styles["bushes"] + ""}
+            id="bushes"
+          >
+            {bush}
+          </div>
           <div className={Styles["hr"]}></div>
         </div>
       </div>
