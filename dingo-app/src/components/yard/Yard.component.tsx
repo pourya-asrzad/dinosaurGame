@@ -32,7 +32,7 @@ const Yard = () => {
     setInterval(() => {
       const cactusCurrent = _optionBushes.current!;
       const cactusLeft = parseInt(cactusCurrent["offsetLeft"]);
-      const dinoCurrent = _optionBushes.current!;
+      const dinoCurrent = _optionDino.current!;
       const dinoTop = dinoCurrent["offsetBottom"];
       // console.log(dinoTop);
       if (cactusLeft < -490 && cactusLeft < 556) {

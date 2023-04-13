@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import dinasour from "../../assets/images/dinasour.svg";
 import dinasourMove1 from "../../assets/images/move1.svg";
 import dinasourMove2 from "../../assets/images/move2.svg";
@@ -7,7 +7,7 @@ type dingo = {
   className?: string;
   ref: any;
 };
-const Dingo = ({ className, ref }: dingo) => {
+const Dingo = React.forwardRef((props: { className: string }, ref: any) => {
   const [changePicture, setChangePicture] = useState<any>(dinasour);
 
   useEffect(() => {
@@ -24,9 +24,14 @@ const Dingo = ({ className, ref }: dingo) => {
   }, [changePicture]);
   return (
     <>
-      <img ref={ref} className={className} src={changePicture} alt="dino" />
+      <img
+        ref={ref}
+        className={props.className}
+        src={changePicture}
+        alt="dino"
+      />
     </>
   );
-};
+});
 
 export default Dingo;
